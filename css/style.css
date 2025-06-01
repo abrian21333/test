@@ -1,0 +1,200 @@
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Sidebar (Navbar Kiri) */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100vh;
+  background-color: #1c1b1b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: width 0.3s ease;
+  z-index: 10;
+  overflow-x: hidden; 
+}
+
+#sidebar.active {
+  width: 200px;
+}
+
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#sidebar.active #menu {
+  opacity: 1;
+}
+
+
+#menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+#menu .label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+#sidebar.active #menu .label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+#sidebar.active #menu a:nth-child(1) .label {
+  transition-delay: 0.05s;
+}
+
+#sidebar.active #menu a:nth-child(2) .label {
+  transition-delay: 0.1s;
+}
+
+#sidebar.active #menu a:nth-child(3) .label {
+  transition-delay: 0.15s;
+}
+
+
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.social-icons a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Konten Utama */
+#content {
+  margin-left: 60px;
+  padding: 40px;
+  flex: 1;
+  transition: margin-left 0.3s ease;
+}
+
+#sidebar.active ~ #content {
+  margin-left: 200px;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Chibi Karakter */
+#chibi-container {
+  margin-top: 30px;
+  width: 200px;
+  height: auto;
+}
+
+#chibi {
+  width: 100%;
+  transition: transform 0.1s;
+  cursor: pointer;
+}
+/* Gaya dasar tombol toggle */
+#toggleBtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.bar {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animasi ke X saat sidebar aktif */
+#sidebar.active ~ #toggleBtn .top {
+  transform: translateY(10px) rotate(45deg);
+}
+
+#sidebar.active ~ #toggleBtn .middle {
+  opacity: 0;
+}
+
+#sidebar.active ~ #toggleBtn .bottom {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+  gap: 10px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+.label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  font-size: 18px;
+}
+
+#sidebar.active .social-icons a .label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+
